@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <item name="breaking_news_start" type="color">#aa000000</item>
+    <item name="breaking_news_center" type="color">#33888888</item>
+    <item name="breaking_news_end" type="color">#00ffffff</item>
+</resources>

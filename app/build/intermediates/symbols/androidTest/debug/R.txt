@@ -1,0 +1,2 @@
+int string oauth_consumer_key 0x7f020000
+int string secret 0x7f020001

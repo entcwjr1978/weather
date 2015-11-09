@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             photoButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    RestApiManager.getInstance().getRequestToken("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5d4ac22d0bad43e97252fe823954655d&tag_mode=all&media=photos&tags=atlanta,skyline,city&format=json&extras=url_h&nojsoncallback=1&per_page=250", getActivity())
+                    RestApiManager.getInstance().getFlickrImages("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=5d4ac22d0bad43e97252fe823954655d&tag_mode=all&media=photos&tags=atlanta,skyline,city&format=json&extras=url_h&nojsoncallback=1&per_page=250", getActivity())
                             .subscribeOn(Schedulers.from(AsyncTask.THREAD_POOL_EXECUTOR))
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Subscriber<JsonFlickrApi>() {

@@ -13,5 +13,5 @@ import rx.Observable;
  */
 public interface WeatherRestApi {
     @GET("/")
-    public Observable<JsonFlickrApi> getRequestToken(@QueryMap(encodeValues = true) Map<String, String> parameters);
+    public Observable<JsonFlickrApi> getFlickrImages(@QueryMap(encodeValues = true) Map<String, String> parameters);
 }

@@ -39,7 +39,7 @@ public class RestApiManager {
         cache = null;
     }
 
-    public Observable<JsonFlickrApi> getRequestToken(String url, Context context) {
+    public Observable<JsonFlickrApi> getFlickrImages(String url, Context context) {
         URI uri = URI.create(url);
 
         cache = new Cache(new File(context.getCacheDir(), "http"), SIZE_OF_CACHE);
@@ -52,6 +52,6 @@ public class RestApiManager {
                 .setClient(new OkClient())
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
-        return restAdapter.create(WeatherRestApi.class).getRequestToken(Utils.buildQueryMap(uri));
+        return restAdapter.create(WeatherRestApi.class).getFlickrImages(Utils.buildQueryMap(uri));
     }
 }

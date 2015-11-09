@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lightcyclesoftware.weather.library.entities.FiveDayDailyForecast;
 import com.lightcyclesoftware.weather.library.entities.JsonFlickrApi;
 import com.lightcyclesoftware.weather.library.services.RestApiManager;
 import com.lightcyclesoftware.weather.library.utils.Utils;
@@ -166,6 +167,27 @@ public class MainActivity extends AppCompatActivity {
                                             .fit()
                                             .placeholder(imageView.getDrawable())
                                             .centerCrop().into(imageView);
+
+                                    RestApiManager.getInstance().getFiveDayDailyForecast("http://api.openweathermap.org/data/2.5/forecast?q=Atlanta,us&mode=json&APPID=1be08fee7477f0a22dbea39cc1a1cbd7&units=imperial", getActivity())
+                                            .subscribeOn(Schedulers.from(AsyncTask.THREAD_POOL_EXECUTOR))
+                                            .observeOn(AndroidSchedulers.mainThread())
+                                            .subscribe(new Subscriber<FiveDayDailyForecast>() {
+
+                                                @Override
+                                                public void onCompleted() {
+
+                                                }
+
+                                                @Override
+                                                public void onError(Throwable e) {
+                                                    System.out.println(e.getMessage());
+                                                }
+
+                                                @Override
+                                                public void onNext(FiveDayDailyForecast fiveDayDailyForecast) {
+                                                    System.out.println(fiveDayDailyForecast.getDailyForecastList());
+                                                }
+                                            });
                                 }
                             });
                 }

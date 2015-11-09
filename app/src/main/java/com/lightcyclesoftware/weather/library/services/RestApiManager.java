@@ -4,7 +4,10 @@ import android.content.Context;
 import android.net.http.HttpResponseCache;
 import android.os.Environment;
 
+import com.lightcyclesoftware.weather.library.entities.DailyForecast;
+import com.lightcyclesoftware.weather.library.entities.FiveDayDailyForecast;
 import com.lightcyclesoftware.weather.library.entities.JsonFlickrApi;
+import com.lightcyclesoftware.weather.library.entities.WeatherData;
 import com.lightcyclesoftware.weather.library.utils.Utils;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.OkHttpClient;
@@ -54,4 +57,32 @@ public class RestApiManager {
                 .build();
         return restAdapter.create(WeatherRestApi.class).getFlickrImages(Utils.buildQueryMap(uri));
     }
+
+    public Observable<FiveDayDailyForecast> getFiveDayDailyForecast(String url, Context context) {
+        URI uri = URI.create(url);
+        OkHttpClient httpClient = new OkHttpClient();
+        Client client = new OkClient(httpClient);
+        httpClient.setConnectTimeout(30, TimeUnit.SECONDS);
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("http://" + uri.getHost() + uri.getPath())
+                .setClient(new OkClient())
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .build();
+        return restAdapter.create(WeatherRestApi.class).getWeatherData(Utils.buildQueryMap(uri))
+                .concatMap(r -> {
+                    FiveDayDailyForecast fiveDayDailyForecast = new FiveDayDailyForecast();
+                    for (int i = 0; i < 5; i++) {
+                        DailyForecast dailyForecast = new DailyForecast();
+                        List<WeatherData.WeatherItem> weatherItemList = new ArrayList<WeatherData.WeatherItem>();
+                        for (int j=0; j < 8; j++) {
+                            weatherItemList.add(r.list.get((8*i) + j));
+                        }
+                        dailyForecast.setLow(Utils.getLowTemp(weatherItemList));
+                        dailyForecast.setHigh(Utils.getHighTemp(weatherItemList));
+                        fiveDayDailyForecast.getDailyForecastList().add(dailyForecast);
+                    }
+                    return Observable.just(fiveDayDailyForecast);
+                });
+    }
+
 }

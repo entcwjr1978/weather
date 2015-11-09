@@ -36,8 +36,8 @@ public class DailyForecast {
         this.id = id;
     }
 
-    private double low;
-    private double high;
+    private double low = 0;
+    private double high = 0;
     private String description;
     private int id;
 }

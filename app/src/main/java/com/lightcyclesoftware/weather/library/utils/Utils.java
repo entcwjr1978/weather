@@ -12,12 +12,15 @@ import java.security.SecureRandom;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.UUID;
 import com.lightcyclesoftware.weather.library.R;
+import com.lightcyclesoftware.weather.library.entities.WeatherData;
+
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -106,5 +109,30 @@ public class Utils {
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
         return randomNum;
+    }
+
+    public static double getLowTemp (List<WeatherData.WeatherItem> weatherItems) {
+        Double result = null;
+
+        for (WeatherData.WeatherItem weatherItem : weatherItems) {
+            if (result == null) {
+                result = weatherItem.main.temp;
+            } else if (weatherItem.main.temp < result){
+                result = weatherItem.main.temp;
+            }
+        }
+        return result;
+    }
+
+    public static double getHighTemp (List<WeatherData.WeatherItem> weatherItems) {
+        Double result = null;
+        for (WeatherData.WeatherItem weatherItem : weatherItems) {
+            if (result == null) {
+                result = weatherItem.main.temp;
+            } else if (weatherItem.main.temp > result){
+                result = weatherItem.main.temp;
+            }
+        }
+        return result;
     }
 }

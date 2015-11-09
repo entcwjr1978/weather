@@ -1,5 +1,7 @@
 package com.lightcyclesoftware.weather.library.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -10,6 +12,7 @@ public class WeatherData {
     public int cod;
     public String message;
     public int cnt;
+    public List<WeatherItem> list;
     public class City {
         public String id;
         public String name;
@@ -64,6 +67,11 @@ public class WeatherData {
     public class Wind {
         public double speed;
         public double deg;
+    }
+
+    public class Rain {
+        @SerializedName("3h")
+        public double threeH;
     }
 
     public class WeatherItemSys {

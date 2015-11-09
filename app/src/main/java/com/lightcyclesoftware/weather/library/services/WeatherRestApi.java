@@ -1,6 +1,7 @@
 package com.lightcyclesoftware.weather.library.services;
 
 import com.lightcyclesoftware.weather.library.entities.JsonFlickrApi;
+import com.lightcyclesoftware.weather.library.entities.WeatherData;
 
 import java.util.Map;
 
@@ -14,4 +15,8 @@ import rx.Observable;
 public interface WeatherRestApi {
     @GET("/")
     public Observable<JsonFlickrApi> getFlickrImages(@QueryMap(encodeValues = true) Map<String, String> parameters);
+
+    @GET("/")
+    public Observable<WeatherData> getWeatherData(@QueryMap(encodeValues = true) Map<String, String> parameters);
+
 }

@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lightcyclesoftware.weather.library.entities.FiveDayDailyForecast;
@@ -36,7 +37,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
-
+    static final String DEGREE  = "\u00b0";
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             final ImageView imageView = (ImageView) rootView.findViewById(R.id.cityImageView);
             Button photoButton = (Button) rootView.findViewById(R.id.photoButton);
@@ -185,6 +186,28 @@ public class MainActivity extends AppCompatActivity {
 
                                                 @Override
                                                 public void onNext(FiveDayDailyForecast fiveDayDailyForecast) {
+                                                    RelativeLayout day0 = (RelativeLayout) rootView.findViewById(R.id.day0);
+                                                    RelativeLayout day1 = (RelativeLayout) rootView.findViewById(R.id.day1);
+                                                    RelativeLayout day2 = (RelativeLayout) rootView.findViewById(R.id.day2);
+                                                    RelativeLayout day3 = (RelativeLayout) rootView.findViewById(R.id.day3);
+                                                    RelativeLayout day4 = (RelativeLayout) rootView.findViewById(R.id.day4);
+                                                    ((TextView)day0.findViewById(R.id.lowTextView)).setText("Low " + Integer.toString((int)fiveDayDailyForecast.getDailyForecastList().get(0).getLow()) + DEGREE);
+                                                    ((TextView)day0.findViewById(R.id.highTextView)).setText("High " + Integer.toString((int)fiveDayDailyForecast.getDailyForecastList().get(0).getHigh()) + DEGREE);
+
+                                                    ((TextView)day1.findViewById(R.id.lowTextView)).setText("Low " + Integer.toString((int)fiveDayDailyForecast.getDailyForecastList().get(1).getLow()) + DEGREE);
+                                                    ((TextView)day1.findViewById(R.id.highTextView)).setText("High " + Integer.toString((int)fiveDayDailyForecast.getDailyForecastList().get(1).getHigh()) + DEGREE);
+
+                                                    ((TextView)day2.findViewById(R.id.lowTextView)).setText("Low " + Integer.toString((int)fiveDayDailyForecast.getDailyForecastList().get(2).getLow()) + DEGREE);
+                                                    ((TextView)day2.findViewById(R.id.highTextView)).setText("High " + Integer.toString((int)fiveDayDailyForecast.getDailyForecastList().get(2).getHigh()) + DEGREE);
+
+                                                    ((TextView)day3.findViewById(R.id.lowTextView)).setText("Low " + Integer.toString((int)fiveDayDailyForecast.getDailyForecastList().get(3).getLow()) + DEGREE);
+                                                    ((TextView)day3.findViewById(R.id.highTextView)).setText("High " + Integer.toString((int)fiveDayDailyForecast.getDailyForecastList().get(3).getHigh()) + DEGREE);
+
+                                                    ((TextView)day4.findViewById(R.id.lowTextView)).setText("Low " + Integer.toString((int)fiveDayDailyForecast.getDailyForecastList().get(4).getLow()) + DEGREE);
+                                                    ((TextView)day4.findViewById(R.id.highTextView)).setText("High " + Integer.toString((int)fiveDayDailyForecast.getDailyForecastList().get(4).getHigh()) + DEGREE);
+
+
+
                                                     System.out.println(fiveDayDailyForecast.getDailyForecastList());
                                                 }
                                             });

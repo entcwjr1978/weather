@@ -46,4 +46,38 @@
         android:textColor="@android:color/white"
         android:layout_marginTop="36dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:rowCount="1"
+        android:columnCount="5">
+        <include layout="@layout/daily_forecast_layout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/day0"/>
+        <include layout="@layout/daily_forecast_layout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/day1"/>
+        <include layout="@layout/daily_forecast_layout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/day2"/>
+        <include layout="@layout/daily_forecast_layout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/day3"/>
+        <include layout="@layout/daily_forecast_layout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/day4"/>
+    </LinearLayout>
+
 </RelativeLayout>

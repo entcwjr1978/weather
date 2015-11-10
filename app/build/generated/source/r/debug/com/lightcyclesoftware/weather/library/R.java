@@ -10,8 +10,29 @@ package com.lightcyclesoftware.weather.library;
 public final class R {
     public static final class attr {
     }
+    public static final class drawable {
+        public static int chanceflurries=0x7f020000;
+        public static int chancerain=0x7f020001;
+        public static int chancesleat=0x7f020002;
+        public static int chancesnow=0x7f020003;
+        public static int chancetstorms=0x7f020004;
+        public static int clear=0x7f020005;
+        public static int cloudy=0x7f020006;
+        public static int flurries=0x7f020007;
+        public static int hazy=0x7f020008;
+        public static int mostlycloudy=0x7f020009;
+        public static int mostlysunny=0x7f02000a;
+        public static int partlycloudy=0x7f02000b;
+        public static int partlysunny=0x7f02000c;
+        public static int rain=0x7f02000d;
+        public static int sleet=0x7f02000e;
+        public static int snow=0x7f02000f;
+        public static int sunny=0x7f020010;
+        public static int tstorms=0x7f020011;
+        public static int unknown=0x7f020012;
+    }
     public static final class string {
-        public static int oauth_consumer_key=0x7f020000;
-        public static int secret=0x7f020001;
+        public static int oauth_consumer_key=0x7f030000;
+        public static int secret=0x7f030001;
     }
 }

@@ -7,41 +7,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Day"
-        android:id="@+id/textView2"
+        android:id="@+id/dayTextView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textSize="32sp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:textColor="@android:color/white" />
 
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/imageView2"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/dayTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/clear" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Low"
-        android:id="@+id/textView3"
+        android:id="@+id/lowTextView"
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
         android:textSize="32sp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:textColor="@android:color/white" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="High"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView3"
+        android:id="@+id/highTextView"
+        android:layout_below="@+id/lowTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:textSize="32sp"
         android:textColor="@android:color/white" />
 </RelativeLayout>

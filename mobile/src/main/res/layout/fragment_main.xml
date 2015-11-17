@@ -1,8 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lightcyclesoftware.weather.MainActivity$PlaceholderFragment">
+    >
 
     <TextView
         android:id="@+id/section_label"
@@ -20,63 +19,68 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Photo"
         android:id="@+id/photoButton"
         android:layout_below="@+id/section_label"
-        android:layout_alignEnd="@+id/cityImageView" />
+        android:layout_alignEnd="@+id/cityImageView"
+        android:background="@android:color/transparent" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/background_gradient" />
+        android:background="@drawable/background_gradient"
+        android:visibility="visible" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Atlanta, GA"
-        android:id="@+id/textView"
-        android:fontFamily="sans-serif"
+        android:id="@+id/cityTextView"
+        android:fontFamily="sans-serif-medium"
         android:layout_alignTop="@+id/photoButton"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="36dp"
+        android:layout_marginLeft="32dp"
         android:textSize="52sp"
         android:textColor="@android:color/white"
-        android:layout_marginTop="36dp" />
+        android:layout_marginTop="18dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:rowCount="1"
-        android:columnCount="5">
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp">
         <include layout="@layout/daily_forecast_layout"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:id="@+id/day0"/>
         <include layout="@layout/daily_forecast_layout"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:id="@+id/day1"/>
         <include layout="@layout/daily_forecast_layout"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:id="@+id/day2"/>
         <include layout="@layout/daily_forecast_layout"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:id="@+id/day3"/>
         <include layout="@layout/daily_forecast_layout"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:id="@+id/day4"/>
     </LinearLayout>
 

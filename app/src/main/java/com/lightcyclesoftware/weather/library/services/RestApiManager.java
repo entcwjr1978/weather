@@ -58,7 +58,7 @@ public class RestApiManager {
         return restAdapter.create(WeatherRestApi.class).getFlickrImages(Utils.buildQueryMap(uri));
     }
 
-    public Observable<FiveDayDailyForecast> getFiveDayDailyForecast(String url, Context context) {
+    public Observable<WeatherData> getFiveDayDailyForecast(String url, Context context) {
         URI uri = URI.create(url);
         OkHttpClient httpClient = new OkHttpClient();
         Client client = new OkClient(httpClient);
@@ -68,21 +68,7 @@ public class RestApiManager {
                 .setClient(new OkClient())
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
-        return restAdapter.create(WeatherRestApi.class).getWeatherData(Utils.buildQueryMap(uri))
-                .concatMap(r -> {
-                    FiveDayDailyForecast fiveDayDailyForecast = new FiveDayDailyForecast();
-                    for (int i = 0; i < 5; i++) {
-                        DailyForecast dailyForecast = new DailyForecast();
-                        List<WeatherData.WeatherItem> weatherItemList = new ArrayList<WeatherData.WeatherItem>();
-                        for (int j=0; j < 8; j++) {
-                            weatherItemList.add(r.list.get((8*i) + j));
-                        }
-                        dailyForecast.setLow(Utils.getLowTemp(weatherItemList));
-                        dailyForecast.setHigh(Utils.getHighTemp(weatherItemList));
-                        fiveDayDailyForecast.getDailyForecastList().add(dailyForecast);
-                    }
-                    return Observable.just(fiveDayDailyForecast);
-                });
+        return restAdapter.create(WeatherRestApi.class).getWeatherData(Utils.buildQueryMap(uri));
     }
 
 }

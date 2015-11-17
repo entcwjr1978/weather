@@ -95,7 +95,6 @@ public class Utils {
     }
 
     public static int randInt(int min, int max) {
-
         // NOTE: This will (intentionally) not run as written so that folks
         // copy-pasting have to think about how to initialize their
         // Random instance.  Initialization of the Random instance is outside
@@ -109,30 +108,5 @@ public class Utils {
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
         return randomNum;
-    }
-
-    public static double getLowTemp (List<WeatherData.WeatherItem> weatherItems) {
-        Double result = null;
-
-        for (WeatherData.WeatherItem weatherItem : weatherItems) {
-            if (result == null) {
-                result = weatherItem.main.temp;
-            } else if (weatherItem.main.temp < result){
-                result = weatherItem.main.temp;
-            }
-        }
-        return result;
-    }
-
-    public static double getHighTemp (List<WeatherData.WeatherItem> weatherItems) {
-        Double result = null;
-        for (WeatherData.WeatherItem weatherItem : weatherItems) {
-            if (result == null) {
-                result = weatherItem.main.temp;
-            } else if (weatherItem.main.temp > result){
-                result = weatherItem.main.temp;
-            }
-        }
-        return result;
     }
 }
